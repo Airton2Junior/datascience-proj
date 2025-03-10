@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/quote-guessing-game-using-web-scraping-in-python/
+
 import requests
 from bs4 import BeautifulSoup
 from csv import writer
