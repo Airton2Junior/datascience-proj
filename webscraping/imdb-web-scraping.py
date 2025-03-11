@@ -8,9 +8,17 @@ import pandas as pd
 
 # Downloading imdb top 250 movie's data
 url = 'http://www.imdb.com/chart/top'
-response = requests.get(url)
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+}
+response = requests.get(url, headers=headers)
+# display status code
+print(response.status_code)
+
+
 soup = BeautifulSoup(response.text, "html.parser")
 movies = soup.select('td.titleColumn')
+print(movies)
 crew = [a.attrs.get('title') for a in soup.select('td.titleColumn a')]
 ratings = [b.attrs.get('data-value')
 		for b in soup.select('td.posterColumn span[name=ir]')]
